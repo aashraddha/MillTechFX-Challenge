@@ -1,0 +1,27 @@
+MilltechFx Challenge:
+
+
+How else would you look to improve the automation testing on this project?
+
+Decide What to Automate.
+Prioritize & Divide Tasks. 
+Prepare Test Cases & Scenario Beforehand. ...
+Identify the Process.
+Create Tests that Don't Affect UI Changes.
+Utilize Quality Test Data.
+Utilize Standardized Test Tools, Frameworks & Techniques.
+
+I will try to do ene-to-end testing UI for the navigation and wokflow of website.
+As a tester point of view I will execute positive and negative test cases like user valid and invalid credentials.
+I will perform functional and non functional testing also i.e. Load and Stress testing by using automation tool jmeter
+I will do cross browser testing to check wesite compatibility on all browsers and platforms.
+I will check all the navigations of pages and its flow.
+I will verify all web elements and automate it using functions and methods.
+I will use bug tracking tool like JIRA and report the bugs.
+I will generate some reports using cucumber BDD framework.
+I will do image testing by using third party tool sikuli in selenium.
+I will verify and access data through excel or other files by using powershell or Apache poi
+I will do assertions to matched up request and responce time.
+Interface testing web server to application server, application server and database
+
+

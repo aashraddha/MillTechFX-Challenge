@@ -1,0 +1,9 @@
+{
+  "plugins": [
+      "cucumber"
+  ],
+
+  "env": { 
+    "jasmine": true
+  }
+}

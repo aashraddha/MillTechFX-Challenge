@@ -1,0 +1,461 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="2ff9f068-51d8-484f-9fdb-075ebd66d9e0" created="3.20.1" activeEnvironment="Default environment" name="REST Project 1" resourceRoot="" updated="3.20.1 2022-01-18T13:40:47Z" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings/>
+  <con:interface xsi:type="con:RestService" id="85644577-2718-4cab-a372-18f7405f9be5" wadlVersion="http://wadl.dev.java.net/2009/02" name="http://api.zippopotam.us" type="rest" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <con:settings/>
+    <con:definitionCache type="TEXT" rootPart=""/>
+    <con:endpoints>
+      <con:endpoint>http://api.zippopotam.us</con:endpoint>
+    </con:endpoints>
+    <con:resource name="PostalCode" path="/{CountryCode}/{postalCode}" id="c8efa313-10a5-4d79-b869-a7af6f5b78de">
+      <con:settings/>
+      <con:parameters/>
+      <con:method name="PostalCode" id="57da79bc-5048-4708-804a-16d1b4789b1d" method="GET">
+        <con:settings/>
+        <con:parameters>
+          <con:parameter required="true">
+            <con:name>CountryCode</con:name>
+            <con:value>CountryCode</con:value>
+            <con:style>TEMPLATE</con:style>
+            <con:default>CountryCode</con:default>
+            <con:path xsi:nil="true"/>
+            <con:description xsi:nil="true"/>
+          </con:parameter>
+          <con:parameter required="true">
+            <con:name>postalCode</con:name>
+            <con:value>postalCode</con:value>
+            <con:style>TEMPLATE</con:style>
+            <con:default>postalCode</con:default>
+            <con:path xsi:nil="true"/>
+            <con:description xsi:nil="true"/>
+          </con:parameter>
+        </con:parameters>
+        <con:representation type="FAULT">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>404</con:status>
+          <con:params/>
+          <con:element>Fault</con:element>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:element xmlns:pos="http://api.zippopotam.us/CountryCode/postalCode">pos:Response</con:element>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>text/html; charset=UTF-8</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:element>html</con:element>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>0</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:request name="Request 1" id="63c9b127-8943-448d-9737-4b6941d4416e" mediaType="application/json">
+          <con:settings/>
+          <con:endpoint>http://api.zippopotam.us</con:endpoint>
+          <con:parameters>
+            <con:entry key="postalCode" value="postalCode"/>
+            <con:entry key="CountryCode" value="CountryCode"/>
+          </con:parameters>
+          <con:parameterOrder>
+            <con:entry>CountryCode</con:entry>
+            <con:entry>postalCode</con:entry>
+          </con:parameterOrder>
+        </con:request>
+      </con:method>
+    </con:resource>
+  </con:interface>
+  <con:testSuite id="a238aa6e-9b5b-4acc-a77f-0a425331d640" name="http://api.zippopotam.us Test Suite">
+    <con:settings/>
+    <con:runType>SEQUENTIAL</con:runType>
+    <con:testCase id="7b3e8937-f9d8-48e3-bf3e-c3799f6029be" discardOkResults="false" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="http://api.zippopotam.us Test Case 1" searchProperties="true" timeout="0">
+      <con:settings/>
+      <con:testStep type="restrequest" name="TC01_wrongcountrycode" id="7b88372d-340f-452a-847d-27da74ecd543">
+        <con:settings/>
+        <con:config service="http://api.zippopotam.us" resourcePath="/{CountryCode}/{postalCode}" methodName="PostalCode" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="TC01_wrongcountrycode" id="63c9b127-8943-448d-9737-4b6941d4416e" mediaType="application/json">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:endpoint>http://api.zippopotam.us</con:endpoint>
+            <con:request/>
+            <con:originalUri>http://api.zippopotam.us/CountryCode/postalCode</con:originalUri>
+            <con:assertion type="Valid HTTP Status Codes" id="46075809-5a06-493d-93ad-03b75b55b41b" name="Valid HTTP Status Codes">
+              <con:settings/>
+              <con:configuration>
+                <codes>401</codes>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="Response SLA Assertion" id="d10ac926-c0e8-415d-9cbd-0db35fd23bc2" name="Response SLA">
+              <con:configuration>
+                <SLA>200</SLA>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="Invalid HTTP Status Codes" id="c6f4abd3-d47d-4962-9534-666875261ee6" name="Invalid HTTP Status Codes">
+              <con:configuration>
+                <codes>400</codes>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="HTTP Header Equals" id="18e45a4f-b900-4a6a-9723-d2fe2f974a24" name="HTTP Header Equals">
+              <con:configuration>
+                <Header>Not Found</Header>
+                <Value>404</Value>
+                <ignoreCase>true</ignoreCase>
+                <useRegEx>true</useRegEx>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:parameters>
+              <con:entry key="postalCode" value="AB1"/>
+              <con:entry key="CountryCode" value="GT"/>
+            </con:parameters>
+            <con:parameterOrder>
+              <con:entry>CountryCode</con:entry>
+              <con:entry>postalCode</con:entry>
+            </con:parameterOrder>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="restrequest" name="TC02_Match value" id="a01f4632-1cd6-4d29-ac51-2bf7bc47cb02">
+        <con:settings/>
+        <con:config service="http://api.zippopotam.us" methodName="PostalCode" resourcePath="/{CountryCode}/{postalCode}" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="TC02_Match value" id="65e90106-2667-4f1e-a883-4955aedcf899" mediaType="application/json">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://api.zippopotam.us</con:endpoint>
+            <con:request/>
+            <con:originalUri>http://api.zippopotam.us/US/postalCode</con:originalUri>
+            <con:assertion type="Valid HTTP Status Codes" id="8ee8de82-841f-4a57-90c1-cfa17a2b5111" name="Valid HTTP Status Codes">
+              <con:settings/>
+              <con:configuration>
+                <codes>200</codes>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="Response SLA Assertion" id="eb0b43e3-efc9-4a89-940e-06e8fe1b2439" name="Response SLA">
+              <con:configuration>
+                <SLA>200</SLA>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="JsonPath Match" id="bf7a0a58-851f-4c06-a68f-2d30b264f5cd" name="JSONPath Match">
+              <con:configuration>
+                <path>$['post code']</path>
+                <content>00210</content>
+                <allowWildcards>true</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:parameters>
+              <con:entry key="postalCode" value="00210"/>
+              <con:entry key="CountryCode" value="US"/>
+            </con:parameters>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="restrequest" name="TC03_DisplayFields" id="ba769de6-2683-4d88-9f6e-d946bb7edf05">
+        <con:settings/>
+        <con:config service="http://api.zippopotam.us" methodName="PostalCode" resourcePath="/{CountryCode}/{postalCode}" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="TC03_DisplayFields" id="3732794d-c1b3-4f6d-9b76-0f3cfae8c3b2" mediaType="application/json">
+            <con:description>code matched</con:description>
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://api.zippopotam.us</con:endpoint>
+            <con:request/>
+            <con:originalUri>http://api.zippopotam.us/FR/01000</con:originalUri>
+            <con:assertion type="Valid HTTP Status Codes" id="f9e5f6f3-ab39-4a81-aa3a-00ee68440a23" name="Valid HTTP Status Codes">
+              <con:settings/>
+              <con:configuration>
+                <codes>200</codes>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="Response SLA Assertion" id="1a1f7a63-6847-4c86-88a3-e53babddd6e5" name="Response SLA">
+              <con:configuration>
+                <SLA>200</SLA>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="DataAndMetadataAssertion" id="c723aa5a-3b55-4323-831d-52f1b029063d" name="Smart Assertion">
+              <con:configuration xsi:type="con:DataAndMetadataAssertion">
+                <con:mode>Received Data</con:mode>
+                <con:elements>
+                  <con:path>$['post code']</con:path>
+                  <con:element>post code</con:element>
+                  <con:operatorId>1</con:operatorId>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>01000</con:expectedValue>
+                  <con:caseSensitive>true</con:caseSensitive>
+                  <con:numberType>false</con:numberType>
+                  <con:expectedDataType>1</con:expectedDataType>
+                </con:elements>
+                <con:elements>
+                  <con:path>$['country']</con:path>
+                  <con:element>country</con:element>
+                  <con:operatorId>1</con:operatorId>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>France</con:expectedValue>
+                  <con:caseSensitive>true</con:caseSensitive>
+                  <con:numberType>false</con:numberType>
+                  <con:expectedDataType>1</con:expectedDataType>
+                </con:elements>
+                <con:elements>
+                  <con:path>$['country abbreviation']</con:path>
+                  <con:element>country abbreviation</con:element>
+                  <con:operatorId>1</con:operatorId>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>FR</con:expectedValue>
+                  <con:caseSensitive>true</con:caseSensitive>
+                  <con:numberType>false</con:numberType>
+                  <con:expectedDataType>1</con:expectedDataType>
+                </con:elements>
+                <con:elements>
+                  <con:path>$['places'][0]['place name']</con:path>
+                  <con:element>place name</con:element>
+                  <con:operatorId>1</con:operatorId>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>Bourg-en-Bresse</con:expectedValue>
+                  <con:caseSensitive>true</con:caseSensitive>
+                  <con:numberType>false</con:numberType>
+                  <con:expectedDataType>1</con:expectedDataType>
+                </con:elements>
+                <con:elements>
+                  <con:path>$['places'][0]['longitude']</con:path>
+                  <con:element>longitude</con:element>
+                  <con:operatorId>1</con:operatorId>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>5.2258</con:expectedValue>
+                  <con:caseSensitive>true</con:caseSensitive>
+                  <con:numberType>false</con:numberType>
+                  <con:expectedDataType>1</con:expectedDataType>
+                </con:elements>
+                <con:elements>
+                  <con:path>$['places'][0]['state']</con:path>
+                  <con:element>state</con:element>
+                  <con:operatorId>1</con:operatorId>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>Rhône-Alpes</con:expectedValue>
+                  <con:caseSensitive>true</con:caseSensitive>
+                  <con:numberType>false</con:numberType>
+                  <con:expectedDataType>1</con:expectedDataType>
+                </con:elements>
+                <con:elements>
+                  <con:path>$['places'][0]['state abbreviation']</con:path>
+                  <con:element>state abbreviation</con:element>
+                  <con:operatorId>1</con:operatorId>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>B9</con:expectedValue>
+                  <con:caseSensitive>true</con:caseSensitive>
+                  <con:numberType>false</con:numberType>
+                  <con:expectedDataType>1</con:expectedDataType>
+                </con:elements>
+                <con:elements>
+                  <con:path>$['places'][0]['latitude']</con:path>
+                  <con:element>latitude</con:element>
+                  <con:operatorId>1</con:operatorId>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>46.2057</con:expectedValue>
+                  <con:caseSensitive>true</con:caseSensitive>
+                  <con:numberType>false</con:numberType>
+                  <con:expectedDataType>1</con:expectedDataType>
+                </con:elements>
+                <con:elements>
+                  <con:path>$['places'][1]['place name']</con:path>
+                  <con:element>place name</con:element>
+                  <con:operatorId>1</con:operatorId>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>Saint-Denis-lès-Bourg</con:expectedValue>
+                  <con:caseSensitive>true</con:caseSensitive>
+                  <con:numberType>false</con:numberType>
+                  <con:expectedDataType>1</con:expectedDataType>
+                </con:elements>
+                <con:elements>
+                  <con:path>$['places'][1]['longitude']</con:path>
+                  <con:element>longitude</con:element>
+                  <con:operatorId>1</con:operatorId>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>5.1892</con:expectedValue>
+                  <con:caseSensitive>true</con:caseSensitive>
+                  <con:numberType>false</con:numberType>
+                  <con:expectedDataType>1</con:expectedDataType>
+                </con:elements>
+                <con:elements>
+                  <con:path>$['places'][1]['state']</con:path>
+                  <con:element>state</con:element>
+                  <con:operatorId>1</con:operatorId>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>Rhône-Alpes</con:expectedValue>
+                  <con:caseSensitive>true</con:caseSensitive>
+                  <con:numberType>false</con:numberType>
+                  <con:expectedDataType>1</con:expectedDataType>
+                </con:elements>
+                <con:elements>
+                  <con:path>$['places'][1]['state abbreviation']</con:path>
+                  <con:element>state abbreviation</con:element>
+                  <con:operatorId>1</con:operatorId>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>B9</con:expectedValue>
+                  <con:caseSensitive>true</con:caseSensitive>
+                  <con:numberType>false</con:numberType>
+                  <con:expectedDataType>1</con:expectedDataType>
+                </con:elements>
+                <con:elements>
+                  <con:path>$['places'][1]['latitude']</con:path>
+                  <con:element>latitude</con:element>
+                  <con:operatorId>1</con:operatorId>
+                  <con:enabled>true</con:enabled>
+                  <con:expectedValue>46.2022</con:expectedValue>
+                  <con:caseSensitive>true</con:caseSensitive>
+                  <con:numberType>false</con:numberType>
+                  <con:expectedDataType>1</con:expectedDataType>
+                </con:elements>
+                <con:originalMessage>{"post code": "01000", "country": "France", "country abbreviation": "FR", "places": [{"place name": "Bourg-en-Bresse", "longitude": "5.2258", "state": "Rh\u00f4ne-Alpes", "state abbreviation": "B9", "latitude": "46.2057"}, {"place name": "Saint-Denis-l\u00e8s-Bourg", "longitude": "5.1892", "state": "Rh\u00f4ne-Alpes", "state abbreviation": "B9", "latitude": "46.2022"}]}</con:originalMessage>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:parameters>
+              <con:entry key="postalCode" value="01000"/>
+              <con:entry key="CountryCode" value="FR"/>
+            </con:parameters>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="restrequest" name="TC04_WrongPostcode" id="cfcc2ac1-ae92-4c1a-9a3e-3da32aecc4a4">
+        <con:settings/>
+        <con:config service="http://api.zippopotam.us" methodName="PostalCode" resourcePath="/{CountryCode}/{postalCode}" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="TC04_WrongPostcode" id="2bbb1b57-a491-42c0-8be2-883c842dd5ba" mediaType="application/json">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://api.zippopotam.us</con:endpoint>
+            <con:request/>
+            <con:originalUri>http://api.zippopotam.us/GB/ZE1</con:originalUri>
+            <con:assertion type="Valid HTTP Status Codes" id="8bab176f-69ec-4b83-a17b-439b387d42d8" name="Valid HTTP Status Codes">
+              <con:settings/>
+              <con:configuration>
+                <codes>200</codes>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="Response SLA Assertion" id="411b66b1-3ec1-460a-84e7-bb9e14db0d5f" name="Response SLA">
+              <con:configuration>
+                <SLA>200</SLA>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:parameters>
+              <con:entry key="postalCode" value="hh"/>
+              <con:entry key="CountryCode" value="GB"/>
+            </con:parameters>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="restrequest" name="TC05_placesreturn" id="aebf8f5a-95e4-48a5-8640-ba094881594c">
+        <con:settings/>
+        <con:config service="http://api.zippopotam.us" methodName="PostalCode" resourcePath="/{CountryCode}/{postalCode}" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="TC05_placesreturn" id="8eaab6fe-3965-4814-92a7-11f6007e6a3e" mediaType="application/json">
+            <con:description>places returned</con:description>
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://api.zippopotam.us</con:endpoint>
+            <con:request/>
+            <con:originalUri>http://api.zippopotam.us/GB/GU22</con:originalUri>
+            <con:assertion type="Valid HTTP Status Codes" id="e7d59c18-9263-469f-9436-4f5d6d9fce76" name="Valid HTTP Status Codes">
+              <con:settings/>
+              <con:configuration>
+                <codes>200</codes>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="Response SLA Assertion" id="477a795d-833e-423c-bb16-f9da9a1c588d" name="Response SLA">
+              <con:configuration>
+                <SLA>200</SLA>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:parameters>
+              <con:entry key="postalCode" value="GU22"/>
+              <con:entry key="CountryCode" value="GB"/>
+            </con:parameters>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:properties/>
+      <con:reportParameters/>
+    </con:testCase>
+    <con:properties/>
+    <con:reportParameters/>
+  </con:testSuite>
+  <con:properties/>
+  <con:wssContainer/>
+  <con:databaseConnectionContainer/>
+  <con:jmsConnectionContainer/>
+  <con:oAuth2ProfileContainer/>
+  <con:oAuth1ProfileContainer/>
+  <con:reporting>
+    <con:reportTemplates/>
+    <con:xmlTemplates/>
+    <con:xmlTemplates/>
+    <con:parameters/>
+    <con:parameters/>
+  </con:reporting>
+  <con:reporting/>
+  <con:eventHandlers type="RequestFilter.filterRequest" name="RequestFilter.filterRequest">
+    <con:script>// Sample event script to add custom HTTP header to all outgoing REST, SOAP and HTTP(S) calls
+// This code is often used for adding custom authentication to ReadyAPI functional tests
+
+// If hardcoding the token, uncomment and change line 5
+// token = '4567'
+
+// If your token is parameterized in Project level custom property, uncomment line 8
+// token = request.parent.testCase.testSuite.project.getProperty('auth_token').getValue()
+
+// To modify all outgoing calls, remove comments from lines 11 to 16
+// headers = request.requestHeaders
+// if (headers.containsKey('auth_token2') == false) {
+//   headers.put('auth_token2', token)
+//   request.requestHeaders = headers
+// }</con:script>
+  </con:eventHandlers>
+  <con:eventHandlers type="TestRunListener.afterStep" name="TestRunListener.afterStep">
+    <con:script>// Save all test step results into files
+// Change the directory path in line 5 to a location where you want to store details
+// then uncomment lines 5 to 10
+
+// filePath = 'C:\\tempOutputDirectory\\'
+// fos = new java.io.FileOutputStream(filePath + testStepResult.testStep.label + '.txt', true)
+// pw = new java.io.PrintWriter(fos)
+// testStepResult.writeTo(pw)
+// pw.close()
+// fos.close()</con:script>
+  </con:eventHandlers>
+  <con:authRepository/>
+  <con:tags/>
+</con:soapui-project>
